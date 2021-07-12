@@ -1,0 +1,22 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "",
+        "limitSymbolsToIncludedHeaders": true
+      },
+      "includePath": [
+        "/home/arun/Anvehsak/ERC_Navigation2021/ERC-Remote-Navigation-Sim/devel/include/**",
+        "/opt/ros/melodic/include/**",
+        "/home/arun/Anvehsak/ERC_Navigation2021/ERC-Remote-Navigation-Sim/src/elevation_mapping/elevation_mapping/include/**",
+        "/home/arun/Anvehsak/ERC_Navigation2021/ERC-Remote-Navigation-Sim/src/kindr/include/**",
+        "/home/arun/Anvehsak/ERC_Navigation2021/ERC-Remote-Navigation-Sim/src/kindr_ros/kindr_ros/include/**",
+        "/home/arun/Anvehsak/ERC_Navigation2021/ERC-Remote-Navigation-Sim/src/kindr_ros/kindr_rviz_plugins/include/**",
+        "/home/arun/Anvehsak/ERC_Navigation2021/ERC-Remote-Navigation-Sim/src/kindr_ros/multi_dof_joint_trajectory_rviz_plugins/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS"
+    }
+  ],
+  "version": 4
+}

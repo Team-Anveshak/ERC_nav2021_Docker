@@ -1,0 +1,26 @@
+input_sources:
+  front:
+    type: pointcloud
+    topic: "/zed2/point_cloud/cloud_registered"
+    queue_size: 1
+    publish_on_update: true
+map_frame_id: "map"
+robot_base_frame_id: "base_link"
+robot_pose_with_covariance_topic: "/odometry/filtered/pose"
+robot_pose_cache_size: 200
+track_point_frame_id: "base_link"
+track_point_x: 1.5
+track_point_y: 0.0
+track_point_z: 0.0
+
+length_in_x: 3
+length_in_y: 3
+position_x: 0.0
+position_y: 0.0
+resolution: 0.02
+min_variance: 0.000009
+max_variance: 0.01
+mahalanobis_distance_threshold: 2.5
+multi_height_noise: 0.0000009
+enable_visibility_cleanup: false
+

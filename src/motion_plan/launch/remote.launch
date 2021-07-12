@@ -1,0 +1,6 @@
+<launch>
+  <machine name="foo" address="192.168.29.70" env-loader="~/Anveshak/ERC-Remote-Navigation-Sim/devel/setup.bash" user="arun"/>
+
+  <include machine="foo" file="$(find leo_erc_gazebo)/launch/leo_marsyard.launch" />
+
+</launch>
