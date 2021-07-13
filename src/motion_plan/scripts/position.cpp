@@ -14,10 +14,21 @@
 geometry_msgs::TwistWithCovarianceStamped twist_cov;
 nav_msgs::Odometry filtered_odom;
 nav_msgs::Odometry true_odom;
-double marker_actual[4][2] = {{5.702769, 0.0},
+double marker_actual[15][2] = {{5.702769, 0.0},
                               {4.503994, 6.826416},
                               {14.329459 -0.428800},
-                              {29.215900, 5.300520}};
+                              {29.215900, 5.300520},
+                              {12.103476, -11.714824},
+                              {18.821705, 12.167322},
+                              {18.397116, 3.251184},
+                              {18.566999 -18.526400},
+                              {12.228898, 7.785070},
+                              {20.629101, -8.191796},
+                              {29.695601, -16.672436},
+                              {28.375999, 11.429800},
+                              {30.889601, -5.985371},
+                              {1.717059, -10.908800},
+                              {5.813930, 14.724000}};
 nav_msgs::Odometry landmark_pose;
 bool publish_land = false;
 
@@ -59,7 +70,7 @@ void clk_marker(const ar_track_alvar_msgs::AlvarMarkers::ConstPtr& msg)
 {
   for(int i = 0; i < msg->markers.size(); i++)
   {
-    if(msg->markers[i].id >= 1 && msg->markers[i].id <= 4)
+    if(msg->markers[i].id >= 1 && msg->markers[i].id <= 15)
     {
       landmark_pose.header.seq = msg->header.seq;
       landmark_pose.header.stamp = msg->header.stamp;
