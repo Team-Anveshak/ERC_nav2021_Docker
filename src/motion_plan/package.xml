@@ -61,6 +61,12 @@
   <exec_depend>rospy</exec_depend>
   <exec_depend>sensor_msgs</exec_depend>
   <exec_depend>std_msgs</exec_depend>
+  <depend>grid_map</depend>
+  <depend>ar-track-alvar</depend>
+  <depend>move-base</depend>
+  <depend>robot-localization</depend>
+  <depend>topic-tools</depend>
+  <depend>rtabmap-ros</depend>
 
 
   <!-- The export tag contains other, unspecified, tags -->
