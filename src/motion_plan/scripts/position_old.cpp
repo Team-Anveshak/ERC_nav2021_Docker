@@ -87,7 +87,7 @@ int main(int argc, char **argv)
   ros::Publisher pub = n.advertise<geometry_msgs::TwistWithCovarianceStamped>("/wheel_odom_cov", 1);
   ros::Publisher pub1 = n.advertise<nav_msgs::Odometry>("/landmark/odom", 1);
   ros::Subscriber sub = n.subscribe("/wheel_odom", 1, clk_wheel_odom);
-  ros::Subscriber sub1 = n.subscribe("/odometry/landmark/filtered", 1, clk_filtered_odom);
+  ros::Subscriber sub1 = n.subscribe("/odometry/filtered", 1, clk_filtered_odom);
   ros::Subscriber sub2 = n.subscribe("/ground_truth", 1, clk_true_odom);
   ros::Subscriber sub3 = n.subscribe("/ar_pose_marker", 1, clk_marker);
 

@@ -16,7 +16,6 @@
     <param name="odom_frame" value="odom" />
     <param name="base_link_frame" value="base_footprint" />
     <param name="world_frame" value="odom" />
-    <remap from="/odometry/filtered" to="/odometry/landmark/filtered"/>
 
     <param name="odom0" value="/zed2/odom" />
     <param name="odom0_differential" value="false"/>
@@ -35,7 +34,7 @@
   <node pkg="tf" type="static_transform_publisher" name="map_odom_tf" args="0 0 0 0 0 0 1.0 map odom 100"/>
 
   <node pkg="motion_plan" name="position" type="position" output="screen" />
-  <node name="publish_pose" pkg="topic_tools" type="transform" args="/odometry/landmark/filtered /odometry/filtered/pose geometry_msgs/PoseWithCovarianceStamped 'm.header, m.pose'" />
+  <node name="publish_pose" pkg="topic_tools" type="transform" args="/odometry/filtered /odometry/filtered/pose geometry_msgs/PoseWithCovarianceStamped 'm.header, m.pose'" />
 
 
 </launch>

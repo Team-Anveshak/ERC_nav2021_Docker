@@ -16,7 +16,6 @@
     <param name="odom_frame" value="odom" />
     <param name="base_link_frame" value="base_footprint" />
     <param name="world_frame" value="odom" />
-    <remap from="/odometry/filtered" to="/odometry/landmark/filtered"/>
 
     <param name="odom0" value="/zed2/odom" />
     <param name="odom0_differential" value="false"/>
