@@ -8,32 +8,10 @@
     <rosparam file="$(find motion_plan)/config/local_costmap_params.yaml" command="load" />
     <rosparam file="$(find motion_plan)/config/global_costmap_params.yaml" command="load" /> 
     <rosparam file="$(find motion_plan)/config/base_local_planner_params.yaml" command="load" />
+  	<param name="controller_frequency" value="10.0" />
  </node>
 
- <node pkg="grid_map_visualization" type="grid_map_visualization" name="grid_map_visualization" output="screen" />
-  <node pkg="grid_map_demos" type="filters_demo" name="grid_map_filter_demo" output="screen">
-  	<param name="input_topic" value="/elevation_mapping/elevation_map_raw" />
-  	<param name="output_topic" value="filtered_map" />
-    <rosparam command="load" file="$(find motion_plan)/config/filters_demo_filter_chain.yaml" />
-  </node>
-  <rosparam command="load" file="$(find motion_plan)/config/filters_demo.yaml" />
-
-  <node pkg="motion_plan" name="global_mapper" type="global_mapper" output="screen" /> 
-
-  <node pkg="elevation_mapping" type="elevation_mapping" name="elevation_mapping" output="screen">
-    <rosparam command="load" file="$(find motion_plan)/config/elevation.yaml" />
-    <rosparam command="load" file="$(find elevation_mapping)/config/sensor_processors/kinect_nguyen_et_al.yaml" ns ="input_sources/front"/>
-    <rosparam command="load" file="$(find motion_plan)/config/postprocessor_pipeline.yaml" />
-  </node>
-
-  <node pkg="grid_map_visualization" type="grid_map_visualization" name="elevation_map_fused_visualization" output="screen">
-   	<param name="grid_map_topic" value="/elevation_mapping/elevation_map" />
-    <rosparam command="load" file="$(find elevation_mapping_demos)/config/visualization/fused.yaml" />
-  </node>
-  <node pkg="grid_map_visualization" type="grid_map_visualization" name="elevation_map_raw_visualization" output="screen">
-    <param name="grid_map_topic" value="/elevation_mapping/elevation_map_raw" />
-    <rosparam command="load" file="$(find elevation_mapping_demos)/config/visualization/raw.yaml" />
-  </node>
+  <node pkg="motion_plan" name="global_mapper" type="global_mapper" output="screen" />
 
 
   <node pkg="nodelet" type="nodelet" name="voxel_grid" args="standalone pcl/VoxelGrid pcl_manager" output="screen">
