@@ -33,7 +33,7 @@
 
   <node pkg="tf" type="static_transform_publisher" name="map_odom_tf" args="0 0 0 0 0 0 1.0 map odom 100"/>
 
-  <node pkg="motion_plan" name="position" type="position" output="screen" />
+  <node pkg="motion_plan" name="position" type="position_old" output="screen" />
   <node name="publish_pose" pkg="topic_tools" type="transform" args="/odometry/filtered /odometry/filtered/pose geometry_msgs/PoseWithCovarianceStamped 'm.header, m.pose'" />
 
 
