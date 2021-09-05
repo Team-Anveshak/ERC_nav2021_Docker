@@ -67,6 +67,7 @@
   <depend>robot_localization</depend>
   <depend>topic_tools</depend>
   <depend>rtabmap_ros</depend>
+  <depend>teleop_twist_keyboard</depend>
 
 
   <!-- The export tag contains other, unspecified, tags -->
