@@ -131,8 +131,6 @@ add_executable(global_mapper scripts/global_mapper.cpp)
 target_link_libraries(global_mapper ${catkin_LIBRARIES})
 add_executable(position scripts/position.cpp)
 target_link_libraries(position ${catkin_LIBRARIES})
-add_executable(position_old scripts/position_old.cpp)
-target_link_libraries(position_old ${catkin_LIBRARIES})
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
@@ -173,10 +171,10 @@ target_link_libraries(position_old ${catkin_LIBRARIES})
 
 ## Mark executable scripts (Python etc.) for installation
 ## in contrast to setup.py, you can choose the destination
-# install(PROGRAMS
-#   scripts/my_python_script
-#   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-# )
+install(PROGRAMS
+  scripts/angle_maunal.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
 
 ## Mark executables and/or libraries for installation
 # install(TARGETS ${PROJECT_NAME} ${PROJECT_NAME}_node
