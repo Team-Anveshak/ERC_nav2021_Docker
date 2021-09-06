@@ -4,7 +4,7 @@
   <arg name="max_track_error" default="1.0"/>
   <arg name="cam_image_topic" default="/zed2/point_cloud/cloud_registered"/>
   <arg name="cam_info_topic" default="/zed2/depth/camera_info"/>
-  <arg name="output_frame" default="odom"/>
+  <arg name="output_frame" default="base_footprint"/>
   <node name="ar_track_alvar" pkg="ar_track_alvar" type="individualMarkers" respawn="false" output="screen" args="$(arg marker_size) $(arg max_new_marker_error) $(arg max_track_error) $(arg cam_image_topic) $(arg cam_info_topic) $(arg output_frame)"/>
  
   <node name="ekf_odom" pkg="robot_localization" type="ekf_localization_node">  
@@ -63,6 +63,42 @@
       false, false, false, 
       false, false, false,
       false, false, false]</rosparam>
+    
+    <rosparam param="process_noise_covariance">
+      [0.75, 0,    0,    0,    0,    0,    0,     0,     0,    0,    0,    0,    0,    0,    0,
+      0,    0.75, 0,    0,    0,    0,    0,     0,     0,    0,    0,    0,    0,    0,    0,
+      0,    0,    0.06, 0,    0,    0,    0,     0,     0,    0,    0,    0,    0,    0,    0,
+      0,    0,    0,    0.03, 0,    0,    0,     0,     0,    0,    0,    0,    0,    0,    0,
+      0,    0,    0,    0,    0.03, 0,    0,     0,     0,    0,    0,    0,    0,    0,    0,
+      0,    0,    0,    0,    0,    0.06, 0,     0,     0,    0,    0,    0,    0,    0,    0,
+      0,    0,    0,    0,    0,    0,    0.025, 0,     0,    0,    0,    0,    0,    0,    0,
+      0,    0,    0,    0,    0,    0,    0,     0.025, 0,    0,    0,    0,    0,    0,    0,
+      0,    0,    0,    0,    0,    0,    0,     0,     0.04, 0,    0,    0,    0,    0,    0,
+      0,    0,    0,    0,    0,    0,    0,     0,     0,    0.01, 0,    0,    0,    0,    0,
+      0,    0,    0,    0,    0,    0,    0,     0,     0,    0,    0.01, 0,    0,    0,    0,
+      0,    0,    0,    0,    0,    0,    0,     0,     0,    0,    0,    0.02, 0,    0,    0,
+      0,    0,    0,    0,    0,    0,    0,     0,     0,    0,    0,    0,    0.01, 0,    0,
+      0,    0,    0,    0,    0,    0,    0,     0,     0,    0,    0,    0,    0,    0.01, 0,
+      0,    0,    0,    0,    0,    0,    0,     0,     0,    0,    0,    0,    0,    0,    0.015]
+    </rosparam>
+  
+    <rosparam param="initial_estimate_covariance">
+      [50.0,  0,    0,    0,    0,    0,    0,    0,    0,    0,     0,     0,     0,    0,    0,
+      0,    50.0,  0,    0,    0,    0,    0,    0,    0,    0,     0,     0,     0,    0,    0,
+      0,    0,    1e-9,  0,    0,    0,    0,    0,    0,    0,     0,     0,     0,    0,    0,
+      0,    0,    0,    1.0,  0,    0,    0,    0,    0,    0,     0,     0,     0,    0,    0,
+      0,    0,    0,    0,    1.0,  0,    0,    0,    0,    0,     0,     0,     0,    0,    0,
+      0,    0,    0,    0,    0,    1.0,  0,    0,    0,    0,     0,     0,     0,    0,    0,
+      0,    0,    0,    0,    0,    0,    1e-9,  0,    0,    0,     0,     0,     0,    0,    0,
+      0,    0,    0,    0,    0,    0,    0,    1e-9,  0,    0,     0,     0,     0,    0,    0,
+      0,    0,    0,    0,    0,    0,    0,    0,    1e-9,  0,     0,     0,     0,    0,    0,
+      0,    0,    0,    0,    0,    0,    0,    0,    0,    1e-9,   0,     0,     0,    0,    0,
+      0,    0,    0,    0,    0,    0,    0,    0,    0,    0,     1e-9,   0,     0,    0,    0,
+      0,    0,    0,    0,    0,    0,    0,    0,    0,    0,     0,     1e-9,   0,    0,    0,
+      0,    0,    0,    0,    0,    0,    0,    0,    0,    0,     0,     0,     1e-9,  0,    0,
+      0,    0,    0,    0,    0,    0,    0,    0,    0,    0,     0,     0,     0,    1e-9,  0,
+      0,    0,    0,    0,    0,    0,    0,    0,    0,    0,     0,     0,     0,    0,    1e-9]
+    </rosparam>
 
   </node>
   

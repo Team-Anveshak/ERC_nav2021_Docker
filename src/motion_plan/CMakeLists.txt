@@ -15,6 +15,7 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   nav_msgs
   message_generation
+  tf
 )
 
 ## System dependencies are found with CMake's conventions
@@ -173,6 +174,7 @@ target_link_libraries(position ${catkin_LIBRARIES})
 ## in contrast to setup.py, you can choose the destination
 install(PROGRAMS
   scripts/angle_maunal.py
+  scripts/move_base_seq
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
