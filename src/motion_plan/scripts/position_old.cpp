@@ -73,8 +73,6 @@ void calculate_pose(int id, geometry_msgs::PoseStamped transformed_pose, geometr
   tf::Matrix3x3(quat).getRPY(roll, pitch, yaw);
 
   yaw = yaw + land_angle - mark_angle;
-  roll = 0;
-  pitch = 0;
 
   quat2.setRPY(roll, pitch, yaw);
 
