@@ -16,7 +16,6 @@
 geometry_msgs::TwistWithCovarianceStamped twist_cov;
 geometry_msgs::PoseStamped raw_land_pose;
 nav_msgs::Odometry filtered_odom;
-nav_msgs::Odometry true_odom;
 double marker_actual[15][2] = {{9.8, 0.0},
                               {9.8, 3.5},
                               {34.00, 1.50},
@@ -46,7 +45,7 @@ void calculate_pose(int id, geometry_msgs::PoseStamped transformed_pose)
 
   landmark_pose.pose.pose.position.x = filtered_odom.pose.pose.position.x - (x+0.125*x_mul - marker_actual[id-1][0]);
   landmark_pose.pose.pose.position.y = filtered_odom.pose.pose.position.y - (y+0.125*y_mul - marker_actual[id-1][1]);
-  std::cout<<id<<" Marker Error in x,y: "<<(landmark_pose.pose.pose.position.x-true_odom.pose.pose.position.x)<<" "<<(landmark_pose.pose.pose.position.y-true_odom.pose.pose.position.y)<<"\n";
+  std::cout<<id<<" Marker x,y: "<<landmark_pose.pose.pose.position.x<<" "<<landmark_pose.pose.pose.position.y<<"\n";
   std::cout<<x<<" "<<y<<"\n";
 }
 
@@ -63,11 +62,6 @@ void clk_filtered_odom(const nav_msgs::Odometry::ConstPtr& msg)
 {
   if(msg->header.frame_id == "map")
     filtered_odom = *msg;
-}
-
-void clk_true_odom(const nav_msgs::Odometry::ConstPtr& msg)
-{
-  true_odom = *msg;
 }
 
 void clk_marker(const ar_track_alvar_msgs::AlvarMarkers::ConstPtr& msg)
@@ -104,11 +98,10 @@ int main(int argc, char **argv)
   ros::Publisher pub1 = n.advertise<nav_msgs::Odometry>("/landmark/odom", 1);
   ros::Subscriber sub = n.subscribe("/wheel_odom", 1, clk_wheel_odom);
   ros::Subscriber sub1 = n.subscribe("/odometry/filtered", 1, clk_filtered_odom);
-  ros::Subscriber sub2 = n.subscribe("/ground_truth", 1, clk_true_odom);
   ros::Subscriber sub3 = n.subscribe("/ar_pose_marker", 1, clk_marker);
 
 
-  double roll, pitch, yaw_true, yaw_filtered, marker_est_x, marker_est_y;
+  double roll, pitch, yaw_filtered, marker_est_x, marker_est_y;
   tf::Quaternion quat;
 
   landmark_pose.child_frame_id = "map";
@@ -134,11 +127,9 @@ int main(int argc, char **argv)
   {
     tf::quaternionMsgToTF(filtered_odom.pose.pose.orientation, quat);
     tf::Matrix3x3(quat).getRPY(roll, pitch, yaw_filtered);
-    tf::quaternionMsgToTF(true_odom.pose.pose.orientation, quat);
-    tf::Matrix3x3(quat).getRPY(roll, pitch, yaw_true);
 
-    std::cout<<"Error in x,y,yaw: "<<(filtered_odom.pose.pose.position.x-true_odom.pose.pose.position.x)<<" "
-              <<(filtered_odom.pose.pose.position.y-true_odom.pose.pose.position.y)<<" "<<(yaw_filtered-yaw_true)<<"\n";
+    std::cout<<"x,y,yaw: "<<(filtered_odom.pose.pose.position.x)<<" "
+              <<(filtered_odom.pose.pose.position.y)<<" "<<(yaw_filtered)<<"\n";
     
 
     pub.publish(twist_cov);
