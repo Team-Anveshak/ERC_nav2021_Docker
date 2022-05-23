@@ -16,6 +16,7 @@ find_package(catkin REQUIRED COMPONENTS
   nav_msgs
   message_generation
   tf
+  ar_track_alvar_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -79,6 +80,7 @@ generate_messages(
   sensor_msgs
   std_msgs
   nav_msgs
+  ar_track_alvar_msgs
 )
 
 ################################################
@@ -113,7 +115,7 @@ generate_messages(
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES motion_plan
-#  CATKIN_DEPENDS geometry_msgs rospy sensor_msgs std_msgs
+  CATKIN_DEPENDS geometry_msgs rospy sensor_msgs std_msgs ar_track_alvar_msgs
 #  DEPENDS system_lib
 )
 

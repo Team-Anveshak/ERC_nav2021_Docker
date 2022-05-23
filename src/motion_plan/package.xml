@@ -63,6 +63,7 @@
   <exec_depend>std_msgs</exec_depend>
   <depend>grid_map</depend>
   <depend>ar_track_alvar</depend>
+  <depend>ar_track_alvar_msgs</depend>
   <depend>move_base</depend>
   <depend>robot_localization</depend>
   <depend>topic_tools</depend>
