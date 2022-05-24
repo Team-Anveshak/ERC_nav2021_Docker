@@ -1,7 +1,7 @@
 FROM ghcr.io/europeanroverchallenge/erc-remote-image-base:latest
 
 # Install additional packages
-RUN apt-get update && apt-get -y upgrade && apt-get -y install \
+RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get -y upgrade && apt-get -y install \
   tmux \
   nano \
   && rm -rf /var/lib/apt/lists/*
@@ -9,7 +9,7 @@ RUN apt-get update && apt-get -y upgrade && apt-get -y install \
 # Copy packages and build the workspace
 WORKDIR /catkin_ws
 COPY src ./src
-RUN apt-get update \
+RUN DEBIAN_FRONTEND=noninteractive apt-get update \
   && rosdep update \
   && rosdep install --from-paths src -iy \
   && rm -rf /var/lib/apt/lists/*
