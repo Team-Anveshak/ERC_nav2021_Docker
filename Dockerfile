@@ -1,6 +1,7 @@
 FROM ghcr.io/europeanroverchallenge/erc-remote-image-base:latest
 
 # Install additional packages
+ARG DEBIAN_FRONTEND=noninteractive
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get -y upgrade && apt-get -y install \
   tmux \
   nano \
